@@ -45,6 +45,7 @@ public class Main {
 		System.out.println(check());
 	}
 	
+	
 	private static Stack<String> stack = new Stack<>();
 	
 	private static boolean check() {
