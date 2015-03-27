@@ -111,7 +111,7 @@ public class IOD {
 				for (int j = i+1; j < messages.size(); j++) {
 					Message m2 = messages.get(j);
 					//限制 controllability 同一条lifeline上收在发之前
-					if (m1.getToEnd().equals(m2.getFromEnd())) {
+					if (m1.getToEnd().equals(m2.getFromEnd()) || m1.getFromEnd().equals(m2.getFromEnd())) {
 						builder.addConstraint(m1.getName()+"?", m2.getName()+"!");
 					}
 					//限制 fifo order 
