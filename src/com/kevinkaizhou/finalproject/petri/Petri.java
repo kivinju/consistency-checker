@@ -36,14 +36,20 @@ public class Petri {
 			}
 			List<Element> transitionlist = rootEl.getChildren("transition");
 			for (Element element : transitionlist) {
-				String id=element.getAttributeValue("id");
 				String value=element.getChild("name").getChildText("value");
-				transitions.put(id, value);
+				String[] temp = value.split("\\|");
+				transitions.put(temp[0], temp[1]);
 			}
 			List<Element> arclist = rootEl.getChildren("arc");
 			for (Element element : arclist) {
 				String source=element.getAttributeValue("source");
+				if (source.contains("|")) {
+					source = source.split("\\|")[0];
+				}
 				String target=element.getAttributeValue("target");
+				if (target.contains("|")) {
+					target = target.split("\\|")[0];
+				}
 				arcs.add(new Arc(source, target));
 			}
 		} catch (JDOMException e) {
@@ -53,7 +59,8 @@ public class Petri {
 		}
 	}
 	
-	public Vector<String> toTransitions(String fromTransitionId) {
+	public Vector<String> toTransitions(String fromTransition) {
+		String fromTransitionId = getTransitionId(fromTransition);
 		Vector<String> result = new Vector<>();
 		Vector<String> places = new Vector<>();
 		for (Arc arc : arcs) {
@@ -63,7 +70,7 @@ public class Petri {
 		}
 		for (Arc arc : arcs) {
 			if (places.contains(arc.getSourceid())) {
-				result.add(arc.getTargetid());
+				result.add(getTransitionValue(arc.getTargetid()));
 			}
 		}
 		return result;
@@ -80,6 +87,20 @@ public class Petri {
 		p.parse("Petri net 1.xml");
 		System.out.println(p);
 		System.out.println(p.toTransitions("card!"));
+	}
+	
+	public String getTransitionValue(String id) {
+		return transitions.get(id);
+	}
+	
+	public String getTransitionId(String value) {
+		for (Map.Entry<String, String> entry : transitions.entrySet()) {
+			if (entry.getValue().equals(value)) {
+				return entry.getKey();
+			}
+		}
+		System.err.println("未找到此transition");
+		return null;
 	}
 
 	public boolean check(List<String> seq, String testpointer) {
