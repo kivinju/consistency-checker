@@ -10,7 +10,7 @@ import com.kevinkaizhou.finalproject.messageGraph.MessageGraph.Edge;
 /**
  * 
  * @author zhoukai
- * ÀûÓÃÍØÆËÍ¼»ñµÃËùÓĞ¿ÉÄÜµÄÅÅÁĞ
+ * åˆ©ç”¨æ‹“æ‰‘å›¾è·å¾—æ‰€æœ‰å¯èƒ½çš„æ’åˆ—
  */
 public class MessageSeqBuilder {
 	Vector<String> messages;
@@ -40,7 +40,7 @@ public class MessageSeqBuilder {
 	
 	private void dfs(MessageGraph G) {
 		if (G.numberOfNodes() > 0 && G.nodesWithoutIn().size() == 0) {
-			System.err.println("ÍØÆËÍ¼´æÔÚ»·£¬ÏŞÖÆÌõ¼ş×ÔÏàÃ¬¶Ü");
+			System.err.println("æ‹“æ‰‘å›¾å­˜åœ¨ç¯ï¼Œé™åˆ¶æ¡ä»¶è‡ªç›¸çŸ›ç›¾");
 			return;
 		}
 		if (G.numberOfNodes() == 0) {

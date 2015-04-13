@@ -6,7 +6,7 @@ public class InteractionLifeLine {
 	private String id;
 	private String name;
 	
-	//activation即为生命线上的事件，
+	//activation鍗充负鐢熷懡绾夸笂鐨勪簨浠讹紝
 	private List<String> activations;
 	
 	public InteractionLifeLine(String id, String name, List<String> activations) {

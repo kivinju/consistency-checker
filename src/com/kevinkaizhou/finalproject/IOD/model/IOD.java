@@ -17,10 +17,10 @@ import org.jdom2.input.SAXBuilder;
 import com.kevinkaizhou.finalproject.messageGraph.MessageSeqBuilder;
 
 public class IOD {
-	//StringÊÇname, frame×¨×¢×¨×¢ÄÚ²¿µÄlifelineµÈĞÅÏ¢¡£interaction×¨×¢ÕûÕÅÍ¼µÄ½»»¥
+	//Stringæ˜¯name, frameä¸“æ³¨ä¸“æ³¨å†…éƒ¨çš„lifelineç­‰ä¿¡æ¯ã€‚interactionä¸“æ³¨æ•´å¼ å›¾çš„äº¤äº’
 	private Map<String, Frame> frameMap;
 	
-	//String¾ùÎªid
+	//Stringå‡ä¸ºid
 	private Map<String, Interaction> interactionMap;
 	private Map<String, Interaction> initialNodeMap;
 	private Map<String, Interaction> finalNodeMap;
@@ -75,7 +75,7 @@ public class IOD {
 			parseControlflow(controlflowElements);
 //			System.out.println("controlflows:"+controlflowElements.size());
 			
-			//¼ÆËãÃ¿¸öframeµÄseqs
+			//è®¡ç®—æ¯ä¸ªframeçš„seqs
 			parseMessageSeqs();
 			
 		} catch (JDOMException | IOException e) {
@@ -83,7 +83,7 @@ public class IOD {
 		}
 	}
 	
-	//ÔÚÃ¿¸öframeÖĞ´æÈëmessageµÄ¿ÉÄÜĞòÁĞ
+	//åœ¨æ¯ä¸ªframeä¸­å­˜å…¥messageçš„å¯èƒ½åºåˆ—
 	private void parseMessageSeqs() {
 		for (Map.Entry<String, Frame> frameEntry : frameMap.entrySet()) {
 			Frame frame = frameEntry.getValue();
@@ -100,23 +100,23 @@ public class IOD {
 				strings.add(message.getName()+"?");
 			}
 			MessageSeqBuilder builder = new MessageSeqBuilder(strings);
-			//ÏŞÖÆ causality£¬Ã¿Ìõmessage·¢ÔÚÊÕÖ®Ç°
+			//é™åˆ¶ causalityï¼Œæ¯æ¡messageå‘åœ¨æ”¶ä¹‹å‰
 			for (Message message : messages) {
 				builder.addConstraint(message.getName()+"!", message.getName()+"?");
 			}
-			//ÏÈ½«message°´ÕÕsequenceÅÅĞò
+			//å…ˆå°†messageæŒ‰ç…§sequenceæ’åº
 			Collections.sort(messages);
 			for (int i = 0; i < messages.size(); i++) {
 				Message m1 = messages.get(i);
 				for (int j = i+1; j < messages.size(); j++) {
 					Message m2 = messages.get(j);
-					//ÏŞÖÆ controllability Í¬Ò»ÌõlifelineÉÏÊÕ/·¢ÔÚ·¢Ö®Ç°
+					//é™åˆ¶ controllability åŒä¸€æ¡lifelineä¸Šæ”¶/å‘åœ¨å‘ä¹‹å‰
 					if (m1.getToEnd().equals(m2.getFromEnd())) {
 						builder.addConstraint(m1.getName()+"?", m2.getName()+"!");
 					}else if (m1.getFromEnd().equals(m2.getFromEnd())) {
 						builder.addConstraint(m1.getName()+"!", m2.getName()+"!");
 					}
-					//ÏŞÖÆ fifo order 
+					//é™åˆ¶ fifo order 
 					if (m1.getFromEnd().equals(m2.getFromEnd()) && m1.getToEnd().equals(m2.getToEnd())) {
 						builder.addConstraint(m1.getName()+"?", m2.getName()+"?");
 					}
@@ -195,7 +195,7 @@ public class IOD {
 				InteractionLifeLine interactionLifeLine = new InteractionLifeLine(lifelineId, lifelineName, activations);
 				frame.addInteractionLifeLine(interactionLifeLine);
 			}
-			//frameÓÃname×ökey£¡×¢ÒâiodÍ¼ÖĞ²»ÔÊĞí³öÏÖÖØÃûµÄsd
+			//frameç”¨nameåškeyï¼æ³¨æ„iodå›¾ä¸­ä¸å…è®¸å‡ºç°é‡åçš„sd
 			frameMap.put(name, frame);
 		}
 	}
@@ -247,7 +247,7 @@ public class IOD {
 		if (interactionMap.containsKey(id)) {
 			return interactionMap.get(id);
 		}
-		System.err.println("Ã»ÕÒµ½interaction");
+		System.err.println("æ²¡æ‰¾åˆ°interaction");
 		return null;
 	}
 	

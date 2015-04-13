@@ -26,13 +26,13 @@ public class PathRecorder {
 		marked.put(v, true);
 		tempPath.add(v);
 		for (String w : graph.adj(v)) {
-			//µ½ÁËÎ²½Úµã
+			//åˆ°äº†å°¾èŠ‚ç‚¹
 			if(graph.getEndVertices().contains(w)){
 				List<String> path = new ArrayList<>(tempPath);
 				path.add(w);
 				paths.add(path);
 			}
-			//Óöµ½Ñ­»·
+			//é‡åˆ°å¾ªç¯
 			else if (marked.containsKey(w) && marked.get(w)) {
 				List<String> loop = new ArrayList<>();
 				boolean tempRecord=false;
@@ -49,7 +49,7 @@ public class PathRecorder {
 				loop.add(w);
 				loops.add(loop);
 			}
-			//Ã»×ßµ½¹ı£¬×ßÏÂÈ¥
+			//æ²¡èµ°åˆ°è¿‡ï¼Œèµ°ä¸‹å»
 			else{
 				dfs(w);
 			}

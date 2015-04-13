@@ -86,13 +86,11 @@ public class CheckerController {
 		Frame frame = iod.getFrameMap().get(interactionName);
 		for (List<String> seq : frame.getSeqs()) {
 			String tid = petri.getTransitionId(seq.get(0));
-			//��ѭ��
 			if (marked.containsKey(v) && marked.get(v).equals(tid)) {
 				continue;
 			}
 			marked.put(v, tid);
 			tempPath.addAll(seq);
-			//��֤��seq�Ƿ�����ͨ
 			if (petri.check(seq, pipePointer)) {
 				pipePointer = seq.get(seq.size()-1);
 				for (String w : graph.adj(v)) {

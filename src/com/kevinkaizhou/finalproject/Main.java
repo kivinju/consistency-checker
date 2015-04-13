@@ -20,7 +20,7 @@ public class Main {
 	public static Petri petri;
 //	public static PathRecorder pathRecorder;
 	
-	//key-interactionId value-¶ÔÓ¦µÄPetriÍ¼ÖĞµÄtid
+	//key-interactionId value-å¯¹åº”çš„Petriå›¾ä¸­çš„tid
 	public static Map<String, String> marked;
 	public static Graph graph;
 	
@@ -61,7 +61,7 @@ public class Main {
 	 * 
 	 * @author zhoukai
 	 * 
-	 * Éî¶ÈÓÅÏÈ±éÀú£¬Èç¹û×ß¹ıÍ¬Ò»¸öµØ·½£¬·µ»Ø¡£
+	 * æ·±åº¦ä¼˜å…ˆéå†ï¼Œå¦‚æœèµ°è¿‡åŒä¸€ä¸ªåœ°æ–¹ï¼Œè¿”å›ã€‚
 	 * 
 	 */
 	private static boolean check() {
@@ -95,13 +95,13 @@ public class Main {
 		Frame frame = iod.getFrameMap().get(interactionName);
 		for (List<String> seq : frame.getSeqs()) {
 			String tid = petri.getTransitionId(seq.get(0));
-			//µ½Ñ­»·
+			//åˆ°å¾ªç¯
 			if (marked.containsKey(v) && marked.get(v).equals(tid)) {
 				continue;
 			}
 			marked.put(v, tid);
 			tempPath.addAll(seq);
-			//ÑéÖ¤´ËseqÊÇ·ñÄÜ×ßÍ¨
+			//éªŒè¯æ­¤seqæ˜¯å¦èƒ½èµ°é€š
 			if (petri.check(seq, pipePointer)) {
 				pipePointer = seq.get(seq.size()-1);
 				for (String w : graph.adj(v)) {
@@ -119,7 +119,7 @@ public class Main {
 	/**
 	 * @author zhoukai
 	 * 
-	 * Å×Æú·½·¨£¬Ô­À´ÊÇ±éÀúÃ¿Ò»ÌõÂ·¾¶£¬ÔÙ¼ÓÉÏÑ­»·µÄÂ·¾¶¡£ÕâÑù»áµ¼ÖÂËÑË÷²»È«¡£
+	 * æŠ›å¼ƒæ–¹æ³•ï¼ŒåŸæ¥æ˜¯éå†æ¯ä¸€æ¡è·¯å¾„ï¼Œå†åŠ ä¸Šå¾ªç¯çš„è·¯å¾„ã€‚è¿™æ ·ä¼šå¯¼è‡´æœç´¢ä¸å…¨ã€‚
 	 */
 //	private static boolean check() {
 //		String iodpointer;
@@ -152,7 +152,7 @@ public class Main {
 //		String testpointer = pipepointer;
 //		for (List<String> seq : frame.getSeqs()) {
 //			stack.addAll(seq);
-//			//ÔÚpipeÉÏ¿É²»¿ÉÒÔ×ß
+//			//åœ¨pipeä¸Šå¯ä¸å¯ä»¥èµ°
 //			if(!petri.check(seq,testpointer)){
 //				continue;
 //			}

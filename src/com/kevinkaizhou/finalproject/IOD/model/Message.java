@@ -9,11 +9,11 @@ public class Message implements Comparable<Message>{
 	private String id;
 	private String name;
 	
-	//出发&接收的lifeline
+	//鍑哄彂&鎺ユ敹鐨刲ifeline
 	private String fromEnd;
 	private String toEnd;
 	
-	//出发&接收的activation
+	//鍑哄彂&鎺ユ敹鐨刟ctivation
 	private String fromActivation;
 	private String toActivation;
 	
@@ -34,7 +34,7 @@ public class Message implements Comparable<Message>{
 		this.SequenceNumber = sequence;
 	}
 	
-	//根据SequenceNumber比较两个message大小
+	//鏍规嵁SequenceNumber姣旇緝涓や釜message澶у皬
 	@Override
 	public int compareTo(Message o) {
 		String[] s1 = SequenceNumber.split("\\.");

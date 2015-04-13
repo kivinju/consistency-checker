@@ -2,9 +2,9 @@ package com.kevinkaizhou.finalproject.IOD.model;
 
 public class ControlFlow {
 	private String id;
-	//来时的interaction
+	//鏉ユ椂鐨刬nteraction
 	private String from;
-	//去时的interaction
+	//鍘绘椂鐨刬nteraction
 	private String to;
 	
 	public ControlFlow(String id, String from, String to) {
