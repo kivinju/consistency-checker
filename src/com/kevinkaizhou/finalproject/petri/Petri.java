@@ -82,12 +82,12 @@ public class Petri {
 	}
 	
 	//test
-	public static void main(String[] args) {
-		Petri p=new Petri();
-		p.parse("Petri net 1.xml");
-		System.out.println(p);
-		System.out.println(p.toTransitions("card!"));
-	}
+//	public static void main(String[] args) {
+//		Petri p=new Petri();
+//		p.parse("Petri net 1.xml");
+//		System.out.println(p);
+//		System.out.println(p.toTransitions("card!"));
+//	}
 	
 	public String getTransitionValue(String id) {
 		return transitions.get(id);

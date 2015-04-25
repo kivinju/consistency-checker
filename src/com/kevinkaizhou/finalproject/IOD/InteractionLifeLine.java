@@ -1,4 +1,4 @@
-package com.kevinkaizhou.finalproject.IOD.model;
+package com.kevinkaizhou.finalproject.IOD;
 
 import java.util.*;
 

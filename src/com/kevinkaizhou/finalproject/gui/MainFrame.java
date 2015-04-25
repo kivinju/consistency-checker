@@ -12,6 +12,10 @@ import javax.swing.filechooser.*;
 import com.kevinkaizhou.finalproject.CheckerController;
 
 public class MainFrame extends JFrame implements MessageShower,ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton iodButton;
 	private JTextField iodTextField;
 	private JButton petriButton;
@@ -223,10 +227,6 @@ public class MainFrame extends JFrame implements MessageShower,ActionListener{
 		gridBagLayout.setConstraints(jScrollPane2, c);
 		
 		this.add(containerPanel);
-	}
-	
-	public static void main(String[] args) {
-		new MainFrame();
 	}
 
 }

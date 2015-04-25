@@ -1,7 +1,6 @@
-package com.kevinkaizhou.finalproject.IOD.model;
+package com.kevinkaizhou.finalproject.IOD;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -84,15 +83,15 @@ public class Message implements Comparable<Message>{
 		return name;
 	}
 
-	public static void main(String[] args) {
-//		String[] temp = "1.2.3.4".split("\\.");
-//		System.out.println(Arrays.toString(temp));
-		Message m1 = new Message("1.2");
-		Message m2 = new Message("1.1.1");
-		List<Message> list = new ArrayList<>();
-		list.add(m1);list.add(m2);
-		System.out.println(list);
-		Collections.sort(list);
-		System.out.println(list);
-	}
+//	public static void main(String[] args) {
+////		String[] temp = "1.2.3.4".split("\\.");
+////		System.out.println(Arrays.toString(temp));
+//		Message m1 = new Message("1.2");
+//		Message m2 = new Message("1.1.1");
+//		List<Message> list = new ArrayList<>();
+//		list.add(m1);list.add(m2);
+//		System.out.println(list);
+//		Collections.sort(list);
+//		System.out.println(list);
+//	}
 }

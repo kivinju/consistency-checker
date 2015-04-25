@@ -1,18 +1,15 @@
-package com.kevinkaizhou.finalproject;
+package deprecate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 import java.util.Vector;
 
-import com.kevinkaizhou.finalproject.IOD.model.ControlFlow;
-import com.kevinkaizhou.finalproject.IOD.model.Frame;
-import com.kevinkaizhou.finalproject.IOD.model.IOD;
-import com.kevinkaizhou.finalproject.IOD.model.Interaction;
+import com.kevinkaizhou.finalproject.IOD.ControlFlow;
+import com.kevinkaizhou.finalproject.IOD.Frame;
+import com.kevinkaizhou.finalproject.IOD.IOD;
 import com.kevinkaizhou.finalproject.graph.Graph;
-import com.kevinkaizhou.finalproject.graph.PathRecorder;
 import com.kevinkaizhou.finalproject.petri.Petri;
 
 public class Main {
@@ -166,12 +163,12 @@ public class Main {
 //		return false;
 //	}
 	
-	private static void printPath(List<String> path) {
-		for (String string : path) {
-			System.out.print( getVName(string)+ " -> ");
-		}
-		System.out.println("");
-	}
+//	private static void printPath(List<String> path) {
+//		for (String string : path) {
+//			System.out.print( getVName(string)+ " -> ");
+//		}
+//		System.out.println("");
+//	}
 	private static String getVName(String id) {
 		if (iod.getInitialNodeMap().containsKey(id)) {
 			return "initial";

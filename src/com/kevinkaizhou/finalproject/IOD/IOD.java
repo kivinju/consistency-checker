@@ -1,4 +1,4 @@
-package com.kevinkaizhou.finalproject.IOD.model;
+package com.kevinkaizhou.finalproject.IOD;
 
 import java.io.File;
 import java.io.IOException;
@@ -263,8 +263,8 @@ public class IOD {
 		return sb.toString();
 	}
 	
-	public static void main(String[] args) {
-		IOD iod = new IOD("project.xml");
-		System.out.println(iod);
-	}
+//	public static void main(String[] args) {
+//		IOD iod = new IOD("project.xml");
+//		System.out.println(iod);
+//	}
 }

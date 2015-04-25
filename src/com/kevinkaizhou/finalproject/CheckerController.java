@@ -7,20 +7,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import com.kevinkaizhou.finalproject.IOD.model.ControlFlow;
-import com.kevinkaizhou.finalproject.IOD.model.Frame;
-import com.kevinkaizhou.finalproject.IOD.model.IOD;
+import com.kevinkaizhou.finalproject.IOD.ControlFlow;
+import com.kevinkaizhou.finalproject.IOD.Frame;
+import com.kevinkaizhou.finalproject.IOD.IOD;
 import com.kevinkaizhou.finalproject.graph.Graph;
+import com.kevinkaizhou.finalproject.gui.MainFrame;
 import com.kevinkaizhou.finalproject.gui.MessageShower;
 import com.kevinkaizhou.finalproject.petri.Petri;
 
 public class CheckerController {
 
+	// Model
 	public IOD iod;
 	public Petri petri;
 	public Map<String, String> marked;
 	public Graph graph;
 	
+	// View
 	MessageShower shower;
 	
 	public void check(File iodFile, File petriFile, MessageShower shower) {
@@ -67,6 +70,7 @@ public class CheckerController {
 	
 	public static List<String> tempPath = new ArrayList<>();
 	
+	// 主要函数：深度优先遍历
 	// v-interaction id
 	private boolean dfs(String v,String pipePointer) {
 		String interactionName = getVName(v);
@@ -86,11 +90,13 @@ public class CheckerController {
 		Frame frame = iod.getFrameMap().get(interactionName);
 		for (List<String> seq : frame.getSeqs()) {
 			String tid = petri.getTransitionId(seq.get(0));
+			//petri图中已走过，不会重新走
 			if (marked.containsKey(v) && marked.get(v).equals(tid)) {
 				continue;
 			}
 			marked.put(v, tid);
 			tempPath.addAll(seq);
+			// check这个方法用来验证这个sequence在petri网中能否走通
 			if (petri.check(seq, pipePointer)) {
 				pipePointer = seq.get(seq.size()-1);
 				for (String w : graph.adj(v)) {
@@ -114,5 +120,9 @@ public class CheckerController {
 			return iod.getInteractionMap().get(id).getName();
 		}
 		return "";
+	}
+	
+	public static void main(String[] args) {
+		new MainFrame();
 	}
 }
