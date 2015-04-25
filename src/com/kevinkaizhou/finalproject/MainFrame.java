@@ -1,4 +1,4 @@
-package com.kevinkaizhou.finalproject.gui;
+package com.kevinkaizhou.finalproject;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +8,6 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.filechooser.*;
-
-import com.kevinkaizhou.finalproject.CheckerController;
 
 public class MainFrame extends JFrame implements MessageShower,ActionListener{
 	/**

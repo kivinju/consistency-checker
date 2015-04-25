@@ -1,4 +1,4 @@
-package com.kevinkaizhou.finalproject.gui;
+package com.kevinkaizhou.finalproject;
 
 public interface MessageShower {
 

@@ -11,8 +11,6 @@ import com.kevinkaizhou.finalproject.IOD.ControlFlow;
 import com.kevinkaizhou.finalproject.IOD.Frame;
 import com.kevinkaizhou.finalproject.IOD.IOD;
 import com.kevinkaizhou.finalproject.graph.Graph;
-import com.kevinkaizhou.finalproject.gui.MainFrame;
-import com.kevinkaizhou.finalproject.gui.MessageShower;
 import com.kevinkaizhou.finalproject.petri.Petri;
 
 public class CheckerController {
