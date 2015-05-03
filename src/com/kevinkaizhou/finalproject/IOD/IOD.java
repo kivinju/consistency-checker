@@ -94,12 +94,14 @@ public class IOD {
 					messages.add(message);
 				}
 			}
+			//拓扑图添加节点
 			Vector<String> strings = new Vector<>(messages.size());
 			for (Message message : messages) {
 				strings.add(message.getName()+"!");
 				strings.add(message.getName()+"?");
 			}
 			MessageSeqBuilder builder = new MessageSeqBuilder(strings);
+			//拓扑图添加边
 			//限制 causality，每条message发在收之前
 			for (Message message : messages) {
 				builder.addConstraint(message.getName()+"!", message.getName()+"?");

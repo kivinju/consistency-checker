@@ -64,16 +64,17 @@ public class MessageSeqBuilder {
 		messageSeqs.add(tempList);
 	}
 	
-//	public static void main(String[] args) {
-//		Vector<String> vector = new Vector<>();
-//		vector.add("not_approved!");vector.add("not_approved?");vector.add("not_possible!");vector.add("not_possible?");vector.add("option!");vector.add("option?");
-//		MessageSeqBuilder builder = new MessageSeqBuilder(vector);
-//		builder.addConstraint("not_approved!", "not_approved?");
-//		builder.addConstraint("not_possible!", "not_possible?");
-//		builder.addConstraint("option!", "option?");
-//		builder.addConstraint("not_approved?", "not_possible!");
-//		builder.addConstraint("not_approved?", "option!");
-//		builder.addConstraint("not_possible?", "option?");
-//		System.out.println(builder.getSeqs());
-//	}
+	public static void main(String[] args) {
+		Vector<String> vector = new Vector<>();
+		vector.add("not_approved!");vector.add("not_approved?");vector.add("not_possible!");vector.add("not_possible?");vector.add("option!");vector.add("option?");
+		MessageSeqBuilder builder = new MessageSeqBuilder(vector);
+		builder.addConstraint("not_approved!", "not_approved?");
+		builder.addConstraint("not_possible!", "not_possible?");
+		builder.addConstraint("option!", "option?");
+		builder.addConstraint("not_approved?", "not_possible!");
+		builder.addConstraint("not_approved?", "option!");
+		builder.addConstraint("not_possible!", "option!");
+		builder.addConstraint("not_possible?", "option?");
+		System.out.println(builder.getSeqs());
+	}
 }
