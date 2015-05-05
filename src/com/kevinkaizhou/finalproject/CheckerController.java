@@ -18,7 +18,6 @@ public class CheckerController {
 	// Model
 	public IOD iod;
 	public Petri petri;
-	public Map<String, String> marked;
 	public Graph graph;
 	
 	// View
@@ -54,6 +53,9 @@ public class CheckerController {
 			shower.outputMessage("not consistent");
 		}
 	}
+
+	public static List<String> tempPath = new ArrayList<>();
+	public Map<String, String> marked;
 	
 	private boolean check() {
 		for (String start : iod.getInitialNodeMap().keySet()) {
@@ -66,15 +68,12 @@ public class CheckerController {
 		return false;
 	}
 	
-	public static List<String> tempPath = new ArrayList<>();
-	
 	// 主要函数：深度优先遍历
-	// v-interaction id
-	private boolean dfs(String v,String pipePointer) {
-		String interactionName = getVName(v);
+	private boolean dfs(String interactionId,String pipePointer) {
+		String interactionName = getVName(interactionId);
 		if (interactionName.equals("initial")) {
 			tempPath.add("initial");
-			for (String w : graph.adj(v)) {
+			for (String w : graph.adj(interactionId)) {
 				if (dfs(w, pipePointer)) {
 					return true;
 				}
@@ -89,22 +88,22 @@ public class CheckerController {
 		for (List<String> seq : frame.getSeqs()) {
 			String tid = petri.getTransitionId(seq.get(0));
 			//petri图中已走过，不会重新走
-			if (marked.containsKey(v) && marked.get(v).equals(tid)) {
+			if (marked.containsKey(interactionId) && marked.get(interactionId).equals(tid)) {
 				continue;
 			}
-			marked.put(v, tid);
+			marked.put(interactionId, tid);
 			tempPath.addAll(seq);
 			// check这个方法用来验证这个sequence在petri网中能否走通
 			if (petri.check(seq, pipePointer)) {
 				pipePointer = seq.get(seq.size()-1);
-				for (String w : graph.adj(v)) {
+				for (String w : graph.adj(interactionId)) {
 					if (dfs(w, pipePointer)) {
 						return true;
 					}
 				}
 			}
 			tempPath.removeAll(seq);
-			marked.remove(v);
+			marked.remove(interactionId);
 		}
 		return false;
 	}
